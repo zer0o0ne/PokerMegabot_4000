@@ -49,15 +49,13 @@ class NeuralHistoryCompressor(nn.Module):
     def __init__(self, num_agents, depth, lstm_params, train_freq = 5, eps = 0.001):
         super().__init__()
         self.stories = [deque()] * num_agents
-        self.depth = depth
-        self.train_freq = train_freq
+        self.depth, self.train_freq, self.eps = depth, train_freq, eps
         self.freqs = [0] * num_agents
         self.compressors = nn.ModuleList([nn.LSTM(**lstm_params[i]) for i in range(len(lstm_params))])
         self.optimizer = torch.optim.Adam(self.parameters())
         self.hn = [torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(len(lstm_params))]
         self.cn = [torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(len(lstm_params))]
         self.mse = nn.MSELoss()
-        self.eps = eps
 
     def get_state(self, players):
         return {"players_state" : {player : list(self.stories[player]) for player in players} }
