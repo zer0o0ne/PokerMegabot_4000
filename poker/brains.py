@@ -6,10 +6,10 @@ from agents import *
 from collections import deque
 
 class SimpleBrain:
-    def __init__(self, num_agents, loss, memory, agent_type, emb_type, emb_args = {}, agent_args = {}):
+    def __init__(self, num_agents, loss, memory, agent_type, embedding, agent_args = {}):
         self.memory = memory
         self.num_agents = num_agents
-        self.embedding = emb_type(**emb_args)
+        self.embedding = embedding
         self.indicies = list(range(num_agents))
         self.agents = [agent_type(i, **agent_args) for i in range(self.num_agents)]
         self.modules = self.agents[0].get_modules()

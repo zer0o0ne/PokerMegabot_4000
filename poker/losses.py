@@ -3,9 +3,8 @@ from torch import nn
 import numpy as np
 
 class ConditionalExpectation_Loss:
-    def __init__(self, function_args = [], functions = [], possible_events = []):
+    def __init__(self, function_args = [], functions = []):
         self.Modules = nn.ModuleList([functions[i](**function_args[i]) for i in range(len(functions))])
-        self.possible_events = possible_events
 
     def __call__(self, actions, reward):
         loss = 0
