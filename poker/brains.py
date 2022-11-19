@@ -23,6 +23,10 @@ class SimpleBrain:
         else:
             self.players = players
 
+    def rotate(self):
+        idx = list(range(1, len(self.players))) + [0]
+        self.players = self.players[idx]
+
     def step(self, position, env_state):
         players_state = self.memory.get_state(self.players[env_state["active_positions"]])
         env_state = {**players_state, **env_state}
