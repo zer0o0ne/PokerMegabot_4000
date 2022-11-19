@@ -45,6 +45,7 @@ class SimpleBrain:
         self.optimizers[self.players[position]].zero_grad()
 
 
+#Support class
 class NeuralHistoryCompressor(nn.Module):
     def __init__(self, num_agents, depth, lstm_params, train_freq = 5, eps = 0.001):
         super().__init__()
