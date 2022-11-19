@@ -53,8 +53,8 @@ class NeuralHistoryCompressor(nn.Module):
         self.freqs = [0] * num_agents
         self.compressors = nn.ModuleList([nn.LSTM(**lstm_params[i]) for i in range(len(lstm_params))])
         self.optimizer = torch.optim.Adam(self.parameters())
-        self.hn = [torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(len(lstm_params))]
-        self.cn = [torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(len(lstm_params))]
+        self.hn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(len(lstm_params))]] * num_agents
+        self.cn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(len(lstm_params))]] * num_agents
         self.mse = nn.MSELoss()
 
     def get_state(self, players):
@@ -63,7 +63,7 @@ class NeuralHistoryCompressor(nn.Module):
     def archive(self, env_state, action, player):
         predicted = False
         for level in range(self.depth):
-            env_state, (self.hn[level], self.cn[level]) = self.compressors[level](env_state, (self.hn[level], self.cn[level]))
+            env_state, (self.hn[player][level], self.cn[player][level]) = self.compressors[level](env_state, (self.hn[player][level], self.cn[player][level]))
             divergence = self.mse(env_state, action)
             if divergence.item() < self.eps:
                 predicted = True

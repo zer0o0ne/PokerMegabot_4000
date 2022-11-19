@@ -10,7 +10,7 @@ class ConditionalExpectation_Loss:
         loss = 0
         for action in actions:
             action_exp = 0
-            for step in range(4): # Sum around known events 
+            for step in range(3): # Sum around known events 
                 with torch.no_grad():
                     self.Modules[step].set_weights(action["exp_f_weights"][step])
                 action_exp += self.Modules[step](reward["table"][step])
