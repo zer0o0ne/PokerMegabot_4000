@@ -10,7 +10,7 @@ class SimpleAgent(nn.Module):
         self.module_names = [name for name in modules]
 
     def forward(self, module, x):
-        return self.Modules[module](x)
+        return self.Modules[module](x[self.number], x[:self.number] + x[self.number + 1:])
 
     def get_modules(self):
         return self.module_names

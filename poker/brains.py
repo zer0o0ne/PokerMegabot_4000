@@ -14,17 +14,18 @@ class SimpleBrain:
         self.agents = [agent_type(i, **agent_args) for i in range(self.num_agents)]
         self.modules = self.agents[0].get_modules()
         self.loss = loss
-        self.optimizers = [torch.optim.Adam(list(self.agents[i].parameters()) + 
-                                            list(self.embedding.parameters())) for i in range(self.num_agents)]
+        self.optimizers = [torch.optim.Adam(self.agents[i].parameters()) for i in range(self.num_agents)]
+        self.emb_opt = torch.optim.Adam(self.embedding.parameters())
 
     def sit(self, number, players = None):
+        self.num_players = number
         if players is None:
             self.players = np.random.choice(self.indicies, size = (number,), replace = False)
         else:
             self.players = players
 
     def rotate(self):
-        idx = list(range(1, len(self.players))) + [0]
+        idx = [len(self.players) - 1] + list(range(len(self.players) - 1))
         self.players = self.players[idx]
 
     def step(self, position, env_state):
@@ -32,26 +33,35 @@ class SimpleBrain:
         env_state = {**players_state, **env_state}
         env_state = self.embedding.get_full_state(env_state)
         start = [agent.start(env_state) for agent in self.agents]
-        for module in self.modules:
+        for module in self.modules[:-1]:
             start = [agent(module, start) for agent in self.agents]
         
-        self.memory.archive(env_state["concatenation"], start[self.players[position]]["action"], self.players[position])
-        return start[self.players[position]]
+        finish = self.agents[self.players[position]](self.modules[-1], start)
+        self.memory.archive(env_state, finish["action"], self.players[position])
+        return finish
 
-    def backward(self, position, actions, reward):
+    def backward(self, actions, reward):
+        losses = []
         reward["table"] = self.embedding.get_cards(reward["table"])
-        loss = self.loss(actions, reward)
-        loss.backward(inputs = list(self.agents[self.players[position]].parameters()))
-        return loss.item()
+        for position in range(self.num_players):
+            reward["reward"] = reward["rewards"][position]
+            loss = self.loss(actions[position], reward)
+            if loss is None: continue
+            loss.backward(inputs = list(self.agents[self.players[position]].parameters()))
+            losses.append(loss.item())
+        return losses
     
-    def optimize(self, position):
-        self.optimizers[self.players[position]].step()
-        self.optimizers[self.players[position]].zero_grad()
+    def optimize(self):
+        self.emb_opt.step()
+        self.emb_opt.zero_grad()
+        for position in range(self.num_players):
+            self.optimizers[self.players[position]].step()
+            self.optimizers[self.players[position]].zero_grad()
 
 
 #Support class
 class NeuralHistoryCompressor(nn.Module):
-    def __init__(self, num_agents, depth, lstm_params, train_freq = 5, eps = 0.001):
+    def __init__(self, num_agents, depth, lstm_params, extractor_parameters, train_freq = 5, eps = 0.001):
         super().__init__()
         self.stories = [deque()] * num_agents
         self.depth, self.train_freq, self.eps, self.num_compressors = depth, train_freq, eps, len(lstm_params)
@@ -61,12 +71,15 @@ class NeuralHistoryCompressor(nn.Module):
         self.hn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(self.num_compressors)]] * num_agents
         self.cn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(self.num_compressors)]] * num_agents
         self.mse = nn.MSELoss()
+        self.extractor = nn.Transformer(**extractor_parameters)
 
     def get_state(self, players):
-        return {"players_state" : {player : list(self.stories[player]) for player in players} }
+        players_state = [torch.cat([c.unsqueeze(0) for c in list(self.stories[player])]) for player in players]
+        return {"players_state" : players_state}
 
     def archive(self, env_state, action, player):
         predicted = False
+        env_state = self.extractor(env_state["neuron_table_state"], env_state["neuron_now"])
         for level in range(self.num_compressors):
             env_state, (self.hn[player][level], self.cn[player][level]) = self.compressors[level](env_state, (self.hn[player][level], self.cn[player][level]))
             divergence = self.mse(env_state, action)
