@@ -1,9 +1,10 @@
 import torch
 from torch import nn
 import numpy as np
-from modules import *
-from agents import *
+from player.modules import *
+from player.agents import *
 from collections import deque
+from time import time
 
 class SimpleBrain:
     def __init__(self, num_agents, loss, memory, agent_type, embedding, agent_args = {}):
@@ -47,31 +48,38 @@ class SimpleBrain:
             reward["reward"] = reward["rewards"][position]
             loss = self.loss(actions[position], reward)
             if loss is None: continue
-            loss.backward(inputs = list(self.agents[self.players[position]].parameters()))
+            loss.backward(inputs = list(self.agents[self.players[position]].parameters()) + list(self.embedding.parameters()), retain_graph = True)
             losses.append(loss.item())
         return losses
     
     def optimize(self):
         self.emb_opt.step()
+        torch.zeros((2,), requires_grad = True).sum().backward(inputs = list(self.embedding.parameters()))
         self.emb_opt.zero_grad()
         for position in range(self.num_players):
             self.optimizers[self.players[position]].step()
+            torch.zeros((2,), requires_grad = True).sum().backward(inputs = list(self.agents[self.players[position]].parameters()))
             self.optimizers[self.players[position]].zero_grad()
+
+    def init_history__(self, env_state, action, n_players):
+        env_state = self.embedding.get_full_state(env_state)
+        for position in range(n_players):
+            self.memory.archive(env_state, action, self.players[position])
 
 
 #Support class
 class NeuralHistoryCompressor(nn.Module):
     def __init__(self, num_agents, depth, lstm_params, extractor_parameters, train_freq = 5, eps = 0.001):
         super().__init__()
-        self.stories = [deque()] * num_agents
+        self.stories = [deque() for _ in range(num_agents)]
         self.depth, self.train_freq, self.eps, self.num_compressors = depth, train_freq, eps, len(lstm_params)
         self.freqs = [0] * num_agents
         self.compressors = nn.ModuleList([nn.LSTM(**lstm_params[i]) for i in range(len(lstm_params))])
-        self.optimizer = torch.optim.Adam(self.parameters())
-        self.hn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(self.num_compressors)]] * num_agents
-        self.cn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(self.num_compressors)]] * num_agents
+        self.hn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(self.num_compressors)] for _ in range(num_agents)]
+        self.cn = [[torch.randn(lstm_params[i]["num_layers"], lstm_params[i]["hidden_size"]) for i in range(self.num_compressors)] for _ in range(num_agents)]
         self.mse = nn.MSELoss()
         self.extractor = nn.Transformer(**extractor_parameters)
+        self.optimizer = torch.optim.Adam(self.parameters())
 
     def get_state(self, players):
         players_state = [torch.cat([c.unsqueeze(0) for c in list(self.stories[player])]) for player in players]
@@ -79,6 +87,7 @@ class NeuralHistoryCompressor(nn.Module):
 
     def archive(self, env_state, action, player):
         predicted = False
+        action = action.unsqueeze(0)
         env_state = self.extractor(env_state["neuron_table_state"], env_state["neuron_now"])
         for level in range(self.num_compressors):
             env_state, (self.hn[player][level], self.cn[player][level]) = self.compressors[level](env_state, (self.hn[player][level], self.cn[player][level]))
@@ -86,15 +95,15 @@ class NeuralHistoryCompressor(nn.Module):
             if divergence.item() < self.eps:
                 predicted = True
                 break
-            divergence.backward()
-
+            # divergence.backward(inputs = list(self.parameters()), retain_graph = True)
         if not predicted:
-            self.stories[player].append((env_state, action))
+            self.stories[player].append(torch.cat([env_state, action], axis = 1).cpu().detach())
             if len(self.stories[player]) > self.depth:
                 self.stories[player].popleft()
             self.freqs[player] = (self.freqs[player] + 1) % self.train_freq
             if self.freqs[player] == 0:
                 self.optimizer.step()
+                torch.zeros((2,), requires_grad = True).sum().backward(inputs = list(self.parameters()))
                 self.optimizer.zero_grad()
 
         return env_state

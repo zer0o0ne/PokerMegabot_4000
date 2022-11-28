@@ -1,5 +1,5 @@
 from torch import nn
-from modules import *
+from player.modules import *
 
 class SimpleAgent(nn.Module):
     def __init__(self, number, start_type, start_args = {}, module_args = {}, modules = {}):

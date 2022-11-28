@@ -4,7 +4,8 @@ import numpy as np
 from math import *
 
 class ConditionalExpectation_Loss:
-    def __init__(self, function_args = [], functions = []):
+    def __init__(self, start_credits, function_args = [], functions = []):
+        self.start_credits = start_credits
         self.Modules = nn.ModuleList([functions[i](**function_args[i]) for i in range(len(functions))])
 
     def __call__(self, actions, reward):
@@ -19,9 +20,9 @@ class ConditionalExpectation_Loss:
                     self.Modules[step].set_weights(action["exp_f_weights"][step])
                 action_exp += self.Modules[step](reward["table"][step])
             
-            loss += torch.abs(action_exp - reward["reward"])
-            probabilities = nn.Softmax(action["action"])
-            loss += torch.log(probabilities[torch.argmax(probabilities)]) * (reward["reward"] - action_exp)
+            loss += torch.abs(action_exp - reward["reward"] / self.start_credits)
+            probabilities = nn.Softmax(dim = -1)(action["action"])
+            loss += torch.log(probabilities[torch.argmax(probabilities)]) * (reward["reward"] / self.start_credits - action_exp)
 
         return loss / len(actions)
 

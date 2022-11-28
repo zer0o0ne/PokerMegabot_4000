@@ -2,7 +2,7 @@ import torch
 from torch import nn
 import numpy as np
 from math import *
-from judger import Judger
+from env.judger import Judger
 
 class Table:
     def __init__(self, num_players, bins = 10, max_bet = 2, start_credits = 1000, big_blind = 10, small_blind = 5):
@@ -81,7 +81,7 @@ class Table:
             return True
 
         for i in range(self.num_players):
-            if self.bets[i] < self.high_bet and self.players_state[i] != 2:
+            if self.bets[i] < self.high_bet and self.players_state[i] == 0:
                 self.players_state[i] = 1
 
         waiting_players = self.players_state == 0
@@ -90,8 +90,7 @@ class Table:
             if self.turn == 3:
                 rewards = self.judger.get_reward(self.deck, self.players_state, self.bets)
                 for i in range(self.num_players): 
-                    if rewards[i] > 0:
-                        self.credits[i] += rewards[i]
+                    self.credits[i] += rewards[i] + self.bets[i]
                 return True
             else:
                 self.turn += 1
@@ -99,6 +98,7 @@ class Table:
                 self.active_player = np.argmax(waiting_players)
         
         else:
+            self.active_player = (self.active_player + 1) % self.num_players
             while self.players_state[self.active_player] != 1:
                 self.active_player = (self.active_player + 1) % self.num_players
 
@@ -111,9 +111,9 @@ class Table:
         bank = self.credits[pos]
         hand = self.deck[5 + 2 * pos : 7 + 2 * pos]
         if self.turn == 0: table = [-1] * 5
-        if self.turn == 1: table = self.deck[:3] + [-1] * 2
-        if self.turn == 2: table = self.deck[:4] + [-1]
-        if self.turn == 3: table = self.deck[:5] 
+        if self.turn == 1: table = list(self.deck[:3]) + [-1] * 2
+        if self.turn == 2: table = list(self.deck[:4]) + [-1]
+        if self.turn == 3: table = list(self.deck[:5]) 
         return {"active_positions": active_positions, "pos": pos, "pot": pot, "bank": bank, "hand": hand, "table": table}
 
     def get_reward(self):
