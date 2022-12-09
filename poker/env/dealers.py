@@ -39,9 +39,8 @@ class SimpleDealer:
             env_state["now"] = table_state
             env_state["active_positions"] = table_state["active_positions"]
             step += 1
-
         reward = self.table.get_reward()
-        self.brain.backward(actions, reward)
+        self.brain.save_loss(actions, reward)
         self.brain.rotate()
         for i in range(self.n_players):
             if self.table.credits[i] == 0:

@@ -126,11 +126,23 @@ class FourierOutput(Numbered_MLP):
 class TransformersInput(nn.Module):
     def __init__(self, first_args, second_args):
         super().__init__()
-        self.table_transformer = nn.Transformer(**first_args)
-        self.player_transformer = nn.Transformer(**second_args)
-        self.reshaper = nn.Linear(first_args["d_model"], second_args["d_model"])
+        self.table_transformer = Transformer(**first_args)
+        self.player_transformer = Transformer(**second_args)
 
     def forward(self, x):
         table_state = self.table_transformer(x["neuron_table_state"], x["neuron_now"])
-        player_state = self.player_transformer(torch.cat(x["players_state"]).squeeze(1), self.reshaper(table_state))
+        player_state = self.player_transformer(torch.cat(x["players_state"]).squeeze(1), table_state)
         return (torch.cat([table_state.flatten(), player_state.flatten()]))
+
+
+class Transformer(nn.Module):
+    def __init__(self, dim_source, dim_target, transformer_params, positional_encoding = False):
+        super().__init__()
+        self.source_projection = nn.Linear(dim_source, transformer_params["d_model"])
+        self.target_projection = nn.Linear(dim_target, transformer_params["d_model"])
+        self.transformer = nn.Transformer(**transformer_params)
+
+    def forward(self, source, target):
+        source = self.source_projection(source)
+        target = self.target_projection(target)
+        return self.transformer(source, target)
