@@ -5,14 +5,17 @@ class SimpleDealer:
         self.table = table
         self.brain = brain
 
-    def game(self, n_games, n_players, relocation_freq = 180, training_freq = 45):
+    def game(self, n_games, n_players, relocation_freq = 180, training_freq = 45, device = "cpu"):
         self.n_players = n_players
+        self.device = device
         self.brain.sit(n_players)
+        self.brain.set_device(device)
         self.init_history__()
 
         for game in range(n_games):
             if game % relocation_freq == relocation_freq - 1:
                 self.brain.sit(n_players)
+                self.init_history__()
 
             self.game__()
 
@@ -25,7 +28,7 @@ class SimpleDealer:
         end = False
         self.table.start_table()
         table_state = self.table.get_state()
-        action = torch.zeros((self.table.bins + 4,))
+        action = torch.zeros((self.table.bins + 4,)).to(self.device)
         env_state = self.prepare_state({"table_state": [], "now": 0}, table_state, action)
         env_state["now"] = table_state
         env_state["active_positions"] = table_state["active_positions"]
@@ -59,7 +62,7 @@ class SimpleDealer:
 
     def init_history__(self):
         self.table.start_table()
-        action = torch.zeros((self.table.bins + 4,))
+        action = torch.zeros((self.table.bins + 4,)).to(self.device)
         table_state = self.table.get_state()
         env_state = self.prepare_state({"table_state": [], "now": 0}, table_state, action)
         env_state["now"] = table_state

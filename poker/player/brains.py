@@ -13,7 +13,7 @@ class SimpleBrain(nn.Module):
         self.num_agents = num_agents
         self.embedding = embedding
         self.indicies = list(range(num_agents))
-        self.agents = [agent_type(i, **agent_args) for i in range(self.num_agents)]
+        self.agents = nn.ModuleList([agent_type(i, **agent_args) for i in range(self.num_agents)])
         self.modules = self.agents[0].get_modules()
         self.loss = 0
         self.parameters = list(self.embedding.parameters())
@@ -57,17 +57,22 @@ class SimpleBrain(nn.Module):
         return losses
     
     def optimize(self):
-        t = time()
         self.loss.backward(inputs = self.parameters)
         self.optimizer.step()
         self.optimizer.zero_grad()
         self.loss = 0
-        print("optimization end with time: ", time() - t)
 
     def init_history__(self, env_state, action, n_players):
         env_state = self.embedding.get_full_state(env_state)
         for position in range(n_players):
-            self.memory.archive(env_state, action, self.players[position])
+            if len(self.memory.stories[self.players[position]]) == 0:
+                self.memory.archive(env_state, action, self.players[position])
+
+    def set_device(self, device):
+        self.to(device)
+        self.memory.set_device(device)
+        self.embedding.set_device(device)
+        self.criterion.set_device(device)
 
 
 #Support class
@@ -78,13 +83,16 @@ class NeuralHistoryCompressor(nn.Module):
         self.depth, self.eps, self.train_freq, self.count, self.num_compressors = depth, eps, train_freq, 0, len(memory_params)
         self.compressors = nn.ModuleList([Transformer(**memory_params[i]) for i in range(len(memory_params))])
         self.mse = nn.MSELoss()
-        self.extractor = nn.Transformer(**extractor_parameters)
+        self.extractor = Transformer(**extractor_parameters)
         self.optimizer = torch.optim.Adam(self.parameters())
-        self.loss = 0
+        self.loss, self.device = 0, "cpu"
 
     def get_state(self, players):
-        players_state = [torch.cat([c.unsqueeze(0) for c in list(self.stories[player])]) for player in players]
+        players_state = [torch.cat([c.unsqueeze(0) for c in list(self.stories[player])]).to(self.device) for player in players]
         return {"players_state" : players_state}
+
+    def set_device(self, device):
+        self.device = device
 
     def archive(self, env_state, action, player):
         predicted = False
@@ -94,7 +102,7 @@ class NeuralHistoryCompressor(nn.Module):
         for level in range(self.num_compressors):
             history = list(self.stories[player])
             if len(history) == 0: break
-            predict = self.compressors[level](torch.cat(history), predict)
+            predict = self.compressors[level](torch.cat(history).to(self.device), predict)
             divergence = self.mse(predict, action)
             if divergence.item() < self.eps:
                 predicted = True
