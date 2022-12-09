@@ -28,11 +28,15 @@ class MLP(nn.Module):
 class Fourier(nn.Module):
     def __init__(self, dim_in, depth):
         super().__init__()
-        self.coefs = torch.randn((dim_in, 2 * depth))
+        self.device = "cpu"
+        self.coefs = torch.randn((dim_in, 2 * depth)).to(self.device)
         self.depth = depth
 
     def set_weights(self, w):
-        self.weights = w
+        self.coefs = w.to(self.device)
+
+    def set_device(self, device):
+        self.device = device
 
     def forward(self, x):
         x = x.flatten()
@@ -48,25 +52,29 @@ class SimpleEmbedding(nn.Module):
         self.emb = nn.Embedding(num_cards, hidden_dim)
         self.num_players = num_players
         self.start_credits = start_credits
+        self.device = "cpu"
 
     def cards__(self, cards):
-        return torch.cat([self.emb(torch.tensor(card) + 1).unsqueeze(0) for card in cards], axis = 0)
+        return torch.cat([self.emb(torch.tensor(card).to(self.device) + 1).unsqueeze(0) for card in cards], axis = 0)
 
     def get_cards(self, list_of_steps):
         return [self.cards__(cards) for cards in list_of_steps]
 
+    def set_device(self, device):
+        self.device = device
+
     def get_full_state(self, env_state):
         table_state = []
         for step in env_state["table_state"]:
-            pos = torch.tensor(step["pos"], dtype = torch.float).unsqueeze(0) / self.num_players
-            pot = torch.tensor(step["pot"], dtype = torch.float).unsqueeze(0) / self.start_credits
+            pos = torch.tensor(step["pos"], dtype = torch.float).to(self.device).unsqueeze(0) / self.num_players
+            pot = torch.tensor(step["pot"], dtype = torch.float).to(self.device).unsqueeze(0) / self.start_credits
             table = self.cards__(step["table"]).flatten()
             table_state.append(torch.cat([pos, pot, step["action"], table]).unsqueeze(0))
         table_state = torch.cat(table_state)
         
-        pos = torch.tensor(env_state["now"]["pos"], dtype = torch.float).unsqueeze(0) / self.num_players
-        pot = torch.tensor(env_state["now"]["pot"], dtype = torch.float).unsqueeze(0) / self.start_credits
-        bank = torch.tensor(env_state["now"]["bank"], dtype = torch.float).unsqueeze(0) / self.start_credits
+        pos = torch.tensor(env_state["now"]["pos"], dtype = torch.float).to(self.device).unsqueeze(0) / self.num_players
+        pot = torch.tensor(env_state["now"]["pot"], dtype = torch.float).to(self.device).unsqueeze(0) / self.start_credits
+        bank = torch.tensor(env_state["now"]["bank"], dtype = torch.float).to(self.device).unsqueeze(0) / self.start_credits
         hand = self.cards__(env_state["now"]["hand"]).flatten()
         table = self.cards__(env_state["now"]["table"]).flatten()
         now = torch.cat([pos, pot, bank, hand, table], axis = 0).unsqueeze(0)
@@ -114,10 +122,10 @@ class FourierOutput(Numbered_MLP):
         x = torch.cat([x_i, x_outer])
         for layer in self.process:
             x = layer(x)
-        x = x.flatten()
+        x = self.output(x).flatten()
         exp_f_weights, i = [], 0
         for shape in self.shapes:
-            exp_f_weights.append(x[i : i + np.prod(shape)].view(shape) for shape in self.shapes)
+            exp_f_weights.append(x[i : i + np.prod(shape)].view(shape))
             i += np.prod(shape)
 
         return {"action": x_inner["last_output"], "exp_f_weights": exp_f_weights}

@@ -7,6 +7,12 @@ class ConditionalExpectation_Loss:
     def __init__(self, start_credits, function_args = [], functions = []):
         self.start_credits = start_credits
         self.Modules = nn.ModuleList([functions[i](**function_args[i]) for i in range(len(functions))])
+        self.device = "cpu"
+
+    def set_device(self, device):
+        self.device = device
+        for i in range(len(self.Modules)):
+            self.Modules[i].set_device(device)
 
     def __call__(self, actions, reward):
         loss = 0
