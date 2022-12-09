@@ -11,7 +11,6 @@ class ConditionalExpectation_Loss:
     def __call__(self, actions, reward):
         loss = 0
         if len(actions) == 0:
-            print("Warning! Some player didn`t any action!")
             return None
         for action in actions:
             action_exp = 0
