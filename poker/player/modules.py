@@ -99,7 +99,7 @@ class Numbered_MLP(MLP):
 
     def forward(self, x_inner, x_outer):
         x_inn = self.inner_input(x_inner)
-        x_outer = torch.cat([x.unsqueeze(0) for x in x_outer])
+        x_outer = torch.cat([x.unsqueeze(0) for x in x_outer]).detach()
         x_outer = self.agents_weights @ x_outer
         x_outer = self.outer_input(x_outer)
         x = torch.cat([x_inn, x_outer])
@@ -116,7 +116,7 @@ class FourierOutput(Numbered_MLP):
 
     def forward(self, x_inner, x_outer):
         x_i = self.inner_input(torch.cat([x_inner["last_output"], x_inner["self_transformer_output"]], axis = -1))
-        x_outer = torch.cat([torch.cat([x["last_output"], x["self_transformer_output"]], axis = -1).unsqueeze(0) for x in x_outer])
+        x_outer = torch.cat([torch.cat([x["last_output"], x["self_transformer_output"]], axis = -1).unsqueeze(0) for x in x_outer]).detach()
         x_outer = self.agents_weights @ x_outer
         x_outer = self.outer_input(x_outer)
         x = torch.cat([x_i, x_outer])
