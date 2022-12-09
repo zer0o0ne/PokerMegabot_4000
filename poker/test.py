@@ -132,7 +132,7 @@ dealer = SimpleDealer(table, brain)
 n_games = 250
 
 t = time()
-dealer.game(n_games, num_players, 24, 3, device = "cuda")
+dealer.game(n_games, num_players, 24, 10, device = "cuda")
 print()
 print()
 print(n_games, "games are finished in time", time() - t, "seconds")
