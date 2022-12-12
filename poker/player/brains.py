@@ -84,6 +84,7 @@ class NeuralHistoryCompressor(nn.Module):
         self.compressors = nn.ModuleList([Transformer(**memory_params[i]) for i in range(len(memory_params))])
         self.mse = nn.MSELoss()
         self.extractor = Transformer(**extractor_parameters)
+        self.numerator = nn.Embedding(num_agents, 2)
         self.optimizer = torch.optim.Adam(self.parameters())
         self.loss, self.device = 0, "cpu"
 
@@ -100,23 +101,33 @@ class NeuralHistoryCompressor(nn.Module):
         env_state = self.extractor(env_state["neuron_table_state"], env_state["neuron_now"])
         predict = env_state
         for level in range(self.num_compressors):
-            history = list(self.stories[player])
-            if len(history) == 0: break
-            predict = self.compressors[level](torch.cat(history).to(self.device), predict)
-            divergence = self.mse(predict, action)
-            if divergence.item() < self.eps:
-                predicted = True
-                break
-            self.loss += divergence
+            predict, predicted = self.predict__(player, level, action, predict, predicted)
+            if predicted: break
         if not predicted:
-            self.count = (self.count + 1) % self.train_freq
-            self.stories[player].append(torch.cat([env_state, action], axis = 1).cpu().detach())
-            if len(self.stories[player]) > self.depth:
-                self.stories[player].popleft()
-            if self.count == 0:
-                self.loss.backward(inputs = list(self.parameters()))
-                self.optimizer.step()
-                self.optimizer.zero_grad()
-                self.loss = 0
+            self.save__(player, env_state, action)
 
         return env_state
+
+    def predict__(self, player, level, action, predict, predicted):
+        history = list(self.stories[player])
+        if len(history) == 0: return predict, predicted
+        predict = self.compressors[level](torch.cat(history).to(self.device), predict)
+        divergence = self.mse(predict, action)
+        if divergence.item() < self.eps:
+            predicted = True
+            return predict, predicted
+        self.loss += divergence
+        return predict, predicted
+
+    def save__(self, player, env_state, action):
+        self.count = (self.count + 1) % self.train_freq
+        player_number = self.numerator(torch.tensor(player).to(self.device)).view((1, -1))
+        self.stories[player].append(torch.cat([env_state, action, player_number], axis = 1).detach())
+        if len(self.stories[player]) > self.depth:
+            self.stories[player].popleft()
+        if self.count == 0:
+            self.loss.backward(inputs = list(self.parameters()))
+            self.optimizer.step()
+            self.optimizer.zero_grad()
+            self.loss = 0
+    
