@@ -11,4 +11,6 @@ n_games: 250
 history_train_freq: 32
 brain_train_freq: 10
 relocation_freq: 24
+checkpoint_freq: 3000
+name: "test_games"
 device: "cuda"
