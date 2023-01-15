@@ -33,7 +33,8 @@ class SimpleDealer:
                 self.brain.optimize()   
 
             if  game % checkpoint_freq == checkpoint_freq - 1:
-                self.checkpoint__(game)       
+                self.checkpoint__(game)    
+        logging.warning("Time of finish: " + datetime.now().strftime("%d/%m/%Y_%H:%M:%S"))   
 
     def game__(self, n):
         end = False

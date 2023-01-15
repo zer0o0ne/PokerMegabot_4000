@@ -13,7 +13,9 @@ path = "poker/configs.yaml"
 configs = get_configs(path)
 dealer = get_dealer(configs)
 t = time()
-dealer.game(configs["n_games"], configs["num_players"], configs["relocation_freq"], configs["brain_train_freq"], configs["device"])
+dealer.game(configs["n_games"], configs["num_players"], configs["relocation_freq"], 
+            configs["brain_train_freq"], configs["checkpoint_freq"], 
+            configs["device"], configs["name"])
 print()
 print()
 print(configs["n_games"], "games are finished in", time() - t, "seconds")
