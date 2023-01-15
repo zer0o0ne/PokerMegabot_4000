@@ -74,7 +74,7 @@ def get_configs(filename):
     num_agents = raw_configs["num_agents"]
     num_cards = raw_configs["num_cards"] + 1
     bins = raw_configs["bins"]
-    actions_dim = bins + 4
+    actions_dim = bins + 3
     embedding_hidden_dim = raw_configs["embedding_hidden_dim"]
     feedforward_dim = raw_configs["feedforward_dim"]
     hidden_size = raw_configs["hidden_size"]

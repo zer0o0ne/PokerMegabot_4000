@@ -1,7 +1,7 @@
 num_players: 9
 num_agents: 27
 num_cards: 52
-bins: 8
+bins: 9
 embedding_hidden_dim: 4
 feedforward_dim: 12
 hidden_size: 16

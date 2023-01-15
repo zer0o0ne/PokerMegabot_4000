@@ -51,7 +51,9 @@ class SimpleBrain(nn.Module):
         for position in range(self.num_players):
             reward["reward"] = reward["rewards"][position]
             loss = self.criterion(actions[position], reward)
-            if loss is None: continue
+            if loss is None:
+                losses.append(0) 
+                continue
             self.loss += loss
             losses.append(loss.item())
         return losses
