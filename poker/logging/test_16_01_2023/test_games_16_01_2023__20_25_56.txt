@@ -1,7 +1,0 @@
-Game 0 starts
-Active agents: 14, 20, 19, 9, 3, 17, 24, 4, 1
-Their stacks: 990, 980, 1000, 1000, 1000, 1000, 1000, 1000, 1000
-Their histories lengths: 1, 1, 1, 1, 1, 1, 1, 1, 1
- 
-	Flop: 
-	Active players bets - 0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
