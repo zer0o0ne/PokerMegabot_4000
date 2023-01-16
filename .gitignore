@@ -121,5 +121,5 @@ dmypy.json
 .pyre/
 
 
-checkpoints/
-logging/
+.checkpoints/
+.logging/
