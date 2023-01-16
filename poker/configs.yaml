@@ -15,7 +15,7 @@ history_compressor_depth: 25
 fold_discount: 0.0025
 
 #train strategy
-n_games: 120
+n_games: 5
 history_train_freq: 32
 brain_train_freq: 10
 relocation_freq: 24
