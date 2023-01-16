@@ -1,0 +1,645 @@
+Game 0 starts
+Active agents: 6, 11, 23, 16, 20, 5, 21, 8, 15
+Their stacks: 990, 980, 1000, 1000, 1000, 1000, 1000, 1000, 1000
+Their histories lengths: 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand J of clubs, J of diamods
+	Player bets 0
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand A of clubs, 9 of clubs
+	Player bets 36.666666666666664
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand 10 of spades, 8 of clubs
+	Player bets 105.55555555555554
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand 6 of spades, 3 of hearts
+	Player bets 105.55555555555554
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand A of hearts, J of spades
+	Player bets 280.74074074074065
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 0.0, 8: 0.0, 
+	Player 7 has hand K of spades, A of spades
+	Player bets 643.0864197530861
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 0.0, 
+	Player 8 has hand 3 of clubs, 5 of clubs
+	Player bets 1000
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand 7 of hearts, 6 of hearts
+	Player bets 1000
+ 
+	Flop: 
+	Active players bets - 0: 995.0, 1: 10.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 1 has hand 7 of spades, 2 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 995.0, 2: 36.666666666666664, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 2 has hand J of clubs, J of diamods
+	Player bets 0
+ 
+	Flop: 
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 105.55555555555554, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 3 has hand A of clubs, 9 of clubs
+	Player bets 963.3333333333334
+ 
+	Flop: 
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 1000.0, 4: 105.55555555555554, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 4 has hand 10 of spades, 8 of clubs
+	Player bets 894.4444444444445
+ 
+	Flop: 
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 1000.0, 4: 1000.0, 5: 280.74074074074065, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 5 has hand 6 of spades, 3 of hearts
+	Player bets 894.4444444444445
+ 
+	Flop: 
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 643.0864197530861, 7: 1000.0, 8: 1000.0, 
+	Player 6 has hand A of hearts, J of spades
+	Player bets 719.2592592592594
+ 
+	Flop: 8 of hearts, 6 of clubs, K of clubs
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand 7 of hearts, 6 of hearts
+	Player bets 356.91358024691385
+ 
+	Flop: 8 of hearts, 6 of clubs, K of clubs, 2 of diamods
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand 7 of hearts, 6 of hearts
+	Player bets 0
+ 
+	Flop: 8 of hearts, 6 of clubs, K of clubs, 2 of diamods, 9 of spades
+	Active players bets - 0: 995.0, 2: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand 7 of hearts, 6 of hearts
+	Player bets 0
+ 
+	Game finished with rewards: table, rewards, reward
+	Game finished with losses: 23.595571517944336, 9.438364028930664, -1.3865633010864258, 7.064033031463623, 21.359628677368164, 67.69078826904297, -6.244002819061279, 12.27917766571045, -0.07352052628993988
+ 
+ 
+Game 1 starts
+Active agents: 15, 6, 11, 23, 16, 20, 5, 21, 8
+Their stacks: 0.0, 960.0, -1000.0, -1000.0, -1000.0, -1000.0, -1000.0, 7005.0, -1000.0
+Their histories lengths: 2, 5, 2, 3, 3, 3, 3, 3, 2
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand 9 of hearts, 8 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets 0
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: -1741.111111111111, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -1741.111111111111
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: -1741.111111111111, 4: -2413.2098765432097, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand 2 of spades, 7 of clubs
+	Player bets -2413.2098765432097
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: -1741.111111111111, 4: -2413.2098765432097, 5: -1000.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -1000.0
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: -1741.111111111111, 4: -2413.2098765432097, 5: -1000.0, 6: -5447.174211248284, 7: 0.0, 8: 0.0, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -5447.174211248284
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: -1741.111111111111, 4: -2413.2098765432097, 5: -1000.0, 6: -5447.174211248284, 7: -12863.883554336227, 8: 0.0, 
+	Player 8 has hand 4 of clubs, 3 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: 10.0, 3: -1741.111111111111, 4: -2413.2098765432097, 5: -1000.0, 6: -5447.174211248284, 7: -12863.883554336227, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets 0
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -10856.83500143948, 3: -1741.111111111111, 4: -2413.2098765432097, 5: -1000.0, 6: -5447.174211248284, 7: -12863.883554336227, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -10866.83500143948
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -10856.83500143948, 3: -62776.15778609477, 4: -2413.2098765432097, 5: -1000.0, 6: -5447.174211248284, 7: -12863.883554336227, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -61035.04667498366
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -10856.83500143948, 3: -62776.15778609477, 4: -149871.29400169643, 5: -1000.0, 6: -5447.174211248284, 7: -12863.883554336227, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -147458.08412515323
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -10856.83500143948, 3: -62776.15778609477, 4: -149871.29400169643, 5: -1000.0, 6: -216710.30627094684, 7: -12863.883554336227, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -211263.13205969855
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -10856.83500143948, 3: -62776.15778609477, 4: -149871.29400169643, 5: -1000.0, 6: -216710.30627094684, 7: -505627.19623834867, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -492763.31268401246
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -210620.39762189472, 3: -62776.15778609477, 4: -149871.29400169643, 5: -1000.0, 6: -216710.30627094684, 7: -505627.19623834867, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -199763.56262045525
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -210620.39762189472, 3: -2040168.4034115225, 4: -149871.29400169643, 5: -1000.0, 6: -216710.30627094684, 7: -505627.19623834867, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -1977392.2456254277
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -210620.39762189472, 3: -2040168.4034115225, 4: -4166646.796725879, 5: -1000.0, 6: -216710.30627094684, 7: -505627.19623834867, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -4016775.5027241823
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -210620.39762189472, 3: -2040168.4034115225, 4: -4166646.796725879, 5: -1000.0, 6: -6348228.3113498585, 7: -505627.19623834867, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -6131518.005078912
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -210620.39762189472, 3: -2040168.4034115225, 4: -4166646.796725879, 5: -1000.0, 6: -6348228.3113498585, 7: -8848847.403565, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -8343220.2073266525
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4803658.069483146, 3: -2040168.4034115225, 4: -4166646.796725879, 5: -1000.0, 6: -6348228.3113498585, 7: -8848847.403565, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -4593037.671861252
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4803658.069483146, 3: -46594734.86139628, 4: -4166646.796725879, 5: -1000.0, 6: -6348228.3113498585, 7: -8848847.403565, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -44554566.45798476
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4803658.069483146, 3: -46594734.86139628, 4: -94352137.25669356, 5: -1000.0, 6: -6348228.3113498585, 7: -8848847.403565, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -90185490.45996767
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4803658.069483146, 3: -46594734.86139628, 4: -94352137.25669356, 5: -1000.0, 6: -143066301.9133225, 7: -8848847.403565, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -136718073.60197264
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4803658.069483146, 3: -46594734.86139628, 4: -94352137.25669356, 5: -1000.0, 6: -143066301.9133225, 7: -330741850.56051165, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -321893003.15694666
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -275360291.1828476, 3: -46594734.86139628, 4: -94352137.25669356, 5: -1000.0, 6: -143066301.9133225, 7: -330741850.56051165, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -270556633.11336446
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -275360291.1828476, 3: -1582430764.710705, 4: -94352137.25669356, 5: -1000.0, 6: -143066301.9133225, 7: -330741850.56051165, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -1535836029.8493087
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -275360291.1828476, 3: -1582430764.710705, 4: -3234604444.16544, 5: -1000.0, 6: -143066301.9133225, 7: -330741850.56051165, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -3140252306.9087467
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -275360291.1828476, 3: -1582430764.710705, 4: -3234604444.16544, 5: -1000.0, 6: -4947738343.362513, 7: -330741850.56051165, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -4804672041.44919
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -275360291.1828476, 3: -1582430764.710705, 4: -3234604444.16544, 5: -1000.0, 6: -4947738343.362513, 7: -6913918449.321344, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -6583176598.760833
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3767567609.498411, 3: -1582430764.710705, 4: -3234604444.16544, 5: -1000.0, 6: -4947738343.362513, 7: -6913918449.321344, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -3492207318.3155637
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3767567609.498411, 3: -36348909511.88162, 4: -3234604444.16544, 5: -1000.0, 6: -4947738343.362513, 7: -6913918449.321344, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -34766478747.17091
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3767567609.498411, 3: -36348909511.88162, 4: -73616987127.6391, 5: -1000.0, 6: -4947738343.362513, 7: -6913918449.321344, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -70382382683.47366
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3767567609.498411, 3: -36348909511.88162, 4: -73616987127.6391, 5: -1000.0, 6: -111640109355.9582, 7: -6913918449.321344, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -106692371012.59569
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3767567609.498411, 3: -36348909511.88162, 4: -73616987127.6391, 5: -1000.0, 6: -111640109355.9582, 7: -309716658722.3982, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -302802740273.07684
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -118908940950.52788, 3: -36348909511.88162, 4: -73616987127.6391, 5: -1000.0, 6: -111640109355.9582, 7: -309716658722.3982, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -115141373341.02946
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -118908940950.52788, 3: -1155967302502.7197, 4: -73616987127.6391, 5: -1000.0, 6: -111640109355.9582, 7: -309716658722.3982, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -1119618392990.8381
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -118908940950.52788, 3: -1155967302502.7197, 4: -2359800000862.324, 5: -1000.0, 6: -111640109355.9582, 7: -309716658722.3982, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -2286183013734.685
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -118908940950.52788, 3: -1155967302502.7197, 4: -2359800000862.324, 5: -1000.0, 6: -3605362679446.8247, 7: -309716658722.3982, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -3493722570090.8667
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -118908940950.52788, 3: -1155967302502.7197, 4: -2359800000862.324, 5: -1000.0, 6: -3605362679446.8247, 7: -10066340779296.393, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -9756624120573.994
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3845862156668.6196, 3: -1155967302502.7197, 4: -2359800000862.324, 5: -1000.0, 6: -3605362679446.8247, 7: -10066340779296.393, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -3726953215718.092
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3845862156668.6196, 3: -37392591859140.016, 4: -2359800000862.324, 5: -1000.0, 6: -3605362679446.8247, 7: -10066340779296.393, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -36236624556637.3
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3845862156668.6196, 3: -37392591859140.016, 4: -50906628868798.16, 5: -1000.0, 6: -3605362679446.8247, 7: -10066340779296.393, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -48546828867935.83
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3845862156668.6196, 3: -37392591859140.016, 4: -50906628868798.16, 5: -1000.0, 6: -94059365640296.66, 7: -10066340779296.393, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -90454002960849.83
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -3845862156668.6196, 3: -37392591859140.016, 4: -50906628868798.16, 5: -1000.0, 6: -94059365640296.66, 7: -130847192870786.53, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -120780852091490.14
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -70455920310586.66, 3: -37392591859140.016, 4: -50906628868798.16, 5: -1000.0, 6: -94059365640296.66, 7: -130847192870786.53, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -66610058153918.04
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -70455920310586.66, 3: -682065243647284.1, 4: -50906628868798.16, 5: -1000.0, 6: -94059365640296.66, 7: -130847192870786.53, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -644672651788144.1
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -70455920310586.66, 3: -682065243647284.1, 4: -914074978968654.0, 5: -1000.0, 6: -94059365640296.66, 7: -130847192870786.53, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -863168350099855.9
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -70455920310586.66, 3: -682065243647284.1, 4: -914074978968654.0, 5: -1000.0, 6: -1681335734612970.2, 7: -130847192870786.53, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -1587276368972673.5
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -70455920310586.66, 3: -682065243647284.1, 4: -914074978968654.0, 5: -1000.0, 6: -1681335734612970.2, 7: -4638372093883025.0, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -4507524901012238.0
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1774734215872104.0, 3: -682065243647284.1, 4: -914074978968654.0, 5: -1000.0, 6: -1681335734612970.2, 7: -4638372093883025.0, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -1704278295561517.2
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1774734215872104.0, 3: -1.7227701807975158e+16, 4: -914074978968654.0, 5: -1000.0, 6: -1681335734612970.2, 7: -4638372093883025.0, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -1.6545636564327874e+16
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1774734215872104.0, 3: -1.7227701807975158e+16, 4: -3.498162510841853e+16, 5: -1000.0, 6: -1681335734612970.2, 7: -4638372093883025.0, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -3.406755012944987e+16
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1774734215872104.0, 3: -1.7227701807975158e+16, 4: -3.498162510841853e+16, 5: -1000.0, 6: -5.360335018734556e+16, 7: -4638372093883025.0, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -5.192201445273259e+16
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1774734215872104.0, 3: -1.7227701807975158e+16, 4: -3.498162510841853e+16, 5: -1000.0, 6: -5.360335018734556e+16, 7: -7.481718894233091e+16, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -7.017881684844788e+16
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4.053435561376538e+16, 3: -1.7227701807975158e+16, 4: -3.498162510841853e+16, 5: -1000.0, 6: -5.360335018734556e+16, 7: -7.481718894233091e+16, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -3.875962139789327e+16
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4.053435561376538e+16, 3: -3.931808385063778e+17, 4: -3.498162510841853e+16, 5: -1000.0, 6: -5.360335018734556e+16, 7: -7.481718894233091e+16, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -3.759531366984026e+17
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4.053435561376538e+16, 3: -3.931808385063778e+17, 4: -7.961564778109868e+17, 5: -1000.0, 6: -5.360335018734556e+16, 7: -7.481718894233091e+16, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -7.611748527025682e+17
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4.053435561376538e+16, 3: -3.931808385063778e+17, 4: -7.961564778109868e+17, 5: -1000.0, 6: -1.207370854276274e+18, 7: -7.481718894233091e+16, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -1.1537675040889283e+18
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -4.053435561376538e+16, 3: -3.931808385063778e+17, 4: -7.961564778109868e+17, 5: -1000.0, 6: -1.207370854276274e+18, 7: -1.674706476766491e+18, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -1.59988928782416e+18
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -9.137664451053103e+17, 3: -3.931808385063778e+17, 4: -7.961564778109868e+17, 5: -1000.0, 6: -1.207370854276274e+18, 7: -1.674706476766491e+18, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -8.73232089491545e+17
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -9.137664451053103e+17, 3: -8.862544164383007e+18, 4: -7.961564778109868e+17, 5: -1000.0, 6: -1.207370854276274e+18, 7: -1.674706476766491e+18, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -8.469363325876628e+18
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -9.137664451053103e+17, 3: -8.862544164383007e+18, 4: -1.7939392557789426e+19, 5: -1000.0, 6: -1.207370854276274e+18, 7: -1.674706476766491e+18, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -1.7143236079978439e+19
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -9.137664451053103e+17, 3: -8.862544164383007e+18, 4: -1.7939392557789426e+19, 5: -1000.0, 6: -2.7198027109618225e+19, 7: -1.674706476766491e+18, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -2.5990656255341953e+19
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -9.137664451053103e+17, 3: -8.862544164383007e+18, 4: -1.7939392557789426e+19, 5: -1000.0, 6: -2.7198027109618225e+19, 7: -3.772562450244164e+19, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -3.605091802567515e+19
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -2.0586523284297245e+19, 3: -8.862544164383007e+18, 4: -1.7939392557789426e+19, 5: -1000.0, 6: -2.7198027109618225e+19, 7: -3.772562450244164e+19, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -1.9672756839191933e+19
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -2.0586523284297245e+19, 3: -1.9966597621071918e+20, 4: -1.7939392557789426e+19, 5: -1000.0, 6: -2.7198027109618225e+19, 7: -3.772562450244164e+19, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -1.9080343204633618e+20
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -2.0586523284297245e+19, 3: -1.9966597621071918e+20, 4: -4.0415405821982094e+20, 5: -1000.0, 6: -2.7198027109618225e+19, 7: -3.772562450244164e+19, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -3.862146656620315e+20
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -2.0586523284297245e+19, 3: -1.9966597621071918e+20, 4: -4.0415405821982094e+20, 5: -1000.0, 6: -6.127379638461309e+20, 7: -3.772562450244164e+19, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -5.8553993673651264e+20
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -2.0586523284297245e+19, 3: -1.9966597621071918e+20, 4: -4.0415405821982094e+20, 5: -1000.0, 6: -6.127379638461309e+20, 7: -1.6998268614178798e+21, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -1.662101236915438e+21
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -6.526603073286329e+20, 3: -1.9966597621071918e+20, 4: -4.0415405821982094e+20, 5: -1000.0, 6: -6.127379638461309e+20, 7: -1.6998268614178798e+21, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player bets -6.320737840443357e+20
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -6.526603073286329e+20, 3: -6.344969185818993e+21, 4: -4.0415405821982094e+20, 5: -1000.0, 6: -6.127379638461309e+20, 7: -1.6998268614178798e+21, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player bets -6.145303209608274e+21
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -6.526603073286329e+20, 3: -6.344969185818993e+21, 4: -1.2952464502175276e+22, 5: -1000.0, 6: -6.127379638461309e+20, 7: -1.6998268614178798e+21, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player bets -1.2548310443955455e+22
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -6.526603073286329e+20, 3: -6.344969185818993e+21, 4: -1.2952464502175276e+22, 5: -1000.0, 6: -1.978903006274392e+22, 7: -1.6998268614178798e+21, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player bets -1.917629209889779e+22
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -6.526603073286329e+20, 3: -6.344969185818993e+21, 4: -1.2952464502175276e+22, 5: -1000.0, 6: -1.978903006274392e+22, 7: -4.604327879942745e+22, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player bets -4.434345193800957e+22
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1.906275619055428e+22, 3: -6.344969185818993e+21, 4: -1.2952464502175276e+22, 5: -1000.0, 6: -1.978903006274392e+22, 7: -4.604327879942745e+22, 
+	Player 3 has hand 5 of hearts, 10 of diamods
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1.906275619055428e+22, 4: -1.2952464502175276e+22, 5: -1000.0, 6: -1.978903006274392e+22, 7: -4.604327879942745e+22, 
+	Player 4 has hand 5 of diamods, 10 of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1.906275619055428e+22, 5: -1000.0, 6: -1.978903006274392e+22, 7: -4.604327879942745e+22, 
+	Player 6 has hand Q of clubs, Q of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1.906275619055428e+22, 5: -1000.0, 7: -4.604327879942745e+22, 
+	Player 7 has hand Q of diamods, 8 of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: -995.0, 1: -1.906275619055428e+22, 5: -1000.0, 
+	Player 1 has hand A of hearts, 3 of clubs
+	Player folds
+ 
+	Flop: K of clubs, K of spades, 2 of hearts
+	Active players bets - 0: -995.0, 5: -1000.0, 
+	Player 0 has hand 9 of diamods, K of diamods
+	Player folds
+ 
+	Game finished with rewards: table, rewards, reward
+	Game finished with losses: nan, nan, 11.961780548095703, nan, nan, -1.2838569787419473e+20, nan, nan, 11.762801170349121
+ 
+ 
+Game 2 starts
+Active agents: 8, 15, 6, 11, 23, 16, 20, 5, 21
+Their stacks: 995, 1.906275619055428e+22, -1000.0, 6.344969185818993e+21, 1.2952464502175276e+22, -1.0419249874071992e+23, 1.978903006274392e+22, 4.604327879942745e+22, -1000.0
+Their histories lengths: 3, 3, 20, 3, 18, 18, 4, 18, 18
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand Q of diamods, K of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand K of hearts, 7 of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand 7 of hearts, 10 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand 6 of spades, 10 of diamods
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand 9 of clubs, 4 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 7: 0.0, 8: 0.0, 
+	Player 7 has hand 3 of spades, 9 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 8: 0.0, 
+	Player 8 has hand 8 of clubs, 4 of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 
+	Player 0 has hand 3 of clubs, K of spades
+	Player folds
+ 
+	Game finished with rewards: table, rewards, reward
+	Game finished with losses: nan, 0, nan, nan, nan, nan, nan, nan, nan
+ 
+ 
+Game 3 starts
+Active agents: 21, 8, 15, 6, 11, 23, 16, 20, 5
+Their stacks: 990, 1.906275619055428e+22, -1000.0, 6.344969185818993e+21, 1.2952464502175276e+22, -1.0419249874071992e+23, 1.978903006274392e+22, 4.604327879942745e+22, -1000.0
+Their histories lengths: 19, 4, 3, 21, 4, 19, 19, 5, 19
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand 8 of clubs, K of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand 9 of hearts, 2 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand 3 of hearts, 2 of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand 7 of diamods, 2 of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand 6 of hearts, 5 of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 7: 0.0, 8: 0.0, 
+	Player 7 has hand 10 of clubs, 8 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 8: 0.0, 
+	Player 8 has hand 2 of diamods, 5 of spades
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 
+	Player 0 has hand 9 of spades, Q of hearts
+	Player folds
+ 
+	Game finished with rewards: table, rewards, reward
+	Game finished with losses: nan, 0, nan, nan, nan, nan, nan, nan, nan
+ 
+ 
+Game 4 starts
+Active agents: 5, 21, 8, 15, 6, 11, 23, 16, 20
+Their stacks: 985, 1.906275619055428e+22, -1000.0, 6.344969185818993e+21, 1.2952464502175276e+22, -1.0419249874071992e+23, 1.978903006274392e+22, 4.604327879942745e+22, -1000.0
+Their histories lengths: 20, 20, 4, 4, 22, 5, 20, 20, 6
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand 10 of hearts, 8 of diamods
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand J of hearts, Q of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand 3 of spades, 2 of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand A of diamods, Q of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand 4 of clubs, 5 of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 7: 0.0, 8: 0.0, 
+	Player 7 has hand 5 of spades, 8 of clubs
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 8: 0.0, 
+	Player 8 has hand A of spades, 2 of diamods
+	Player folds
+ 
+	Flop: 
+	Active players bets - 0: 5.0, 1: 10.0, 
+	Player 0 has hand 7 of spades, 6 of hearts
+	Player folds
+ 
+	Game finished with rewards: table, rewards, reward
+	Game finished with losses: nan, 0, nan, nan, nan, nan, nan, nan, nan
+ 
+ 

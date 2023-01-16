@@ -1,10 +1,12 @@
 import numpy as np
+from copy import deepcopy
 
 class Judger:
     def __init__(self):
         pass
 
     def get_reward(self, deck, players_state, bets):
+        deck, players_state, bets = deepcopy(deck), deepcopy(players_state), deepcopy(bets)
         active_players = players_state >= 0
         if active_players.sum() == 1:
             bets *= -1
