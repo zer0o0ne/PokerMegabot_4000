@@ -74,7 +74,9 @@ def get_configs(filename):
     num_agents = raw_configs["num_agents"]
     num_cards = raw_configs["num_cards"] + 1
     bins = raw_configs["bins"]
-    actions_dim = bins + 4
+    actions_dim = bins + 3
+    checkpoint_freq = raw_configs["checkpoint_freq"]
+    name = raw_configs["name"]
     embedding_hidden_dim = raw_configs["embedding_hidden_dim"]
     feedforward_dim = raw_configs["feedforward_dim"]
     hidden_size = raw_configs["hidden_size"]
@@ -189,6 +191,7 @@ def get_configs(filename):
         "memory_params": memory_params, "extractor_parameters": extractor_parameters, "functions": functions, "function_args": function_args,
         "agent_args": agent_args, "num_players": num_players, "bins": bins, "start_credits": start_credits, "num_agents": num_agents,
         "history_compressor_depth": history_compressor_depth, "history_train_freq": history_train_freq, "num_cards": num_cards, 
-        "embedding_hidden_dim": embedding_hidden_dim, "device": device, "n_games": n_games, "brain_train_freq": brain_train_freq, "relocation_freq": relocation_freq,
+        "embedding_hidden_dim": embedding_hidden_dim, "device": device, "n_games": n_games, "brain_train_freq": brain_train_freq, 
+        "relocation_freq": relocation_freq, "checkpoint_freq": checkpoint_freq, "name": name,
     }
 

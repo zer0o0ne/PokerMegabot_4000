@@ -35,7 +35,7 @@ class Table:
         self.high_bet = self.big_blind
         self.bets = np.zeros((self.num_players,))
         self.bets[0], self.bets[1] = sb, bb
-        self.turn = 0
+        self.turn, self.bet = 0, 0
 
     def step(self, action):
         action = torch.argmax(action).item()
@@ -43,9 +43,6 @@ class Table:
             self.players_state[self.active_player] = -1
 
         if action == 1:
-            self.players_state[self.active_player] = 0
-
-        if action == 2:
             bet = min(self.high_bet - self.bets[self.active_player], self.credits[self.active_player]) 
             self.pot += bet
             self.credits[self.active_player] -= bet
@@ -53,8 +50,8 @@ class Table:
             self.players_state[self.active_player] = 0
             if self.credits[self.active_player] == 0: self.players_state[self.active_player] = 2
 
-        if action > 2 and action < self.bins + 3:
-            part_of_pot = (action - 2) * self.max_bet / self.bins
+        if action > 1 and action < self.bins + 2:
+            part_of_pot = (action - 1) * self.max_bet / self.bins
             bet = min(self.high_bet - self.bets[self.active_player] + part_of_pot * self.pot, self.credits[self.active_player])
             self.pot += bet
             self.credits[self.active_player] -= bet
@@ -63,7 +60,7 @@ class Table:
             self.players_state[self.active_player] = 0
             if self.credits[self.active_player] == 0: self.players_state[self.active_player] = 2
 
-        if action == self.bins + 3:
+        if action == self.bins + 2:
             bet = self.credits[self.active_player]
             self.pot += bet
             self.credits[self.active_player] -= bet
@@ -71,6 +68,7 @@ class Table:
             self.high_bet = max(self.high_bet, self.bets[self.active_player])
             self.players_state[self.active_player] = 2
 
+        self.bet = bet
         end = self.next_turn()
         return end, self.get_state()
 
@@ -108,17 +106,22 @@ class Table:
         active_positions = np.arange(self.num_players)[self.players_state >= 0]
         pos = self.active_player
         pot = self.pot
+        bet = self.bet
         bank = self.credits[pos]
         hand = self.deck[5 + 2 * pos : 7 + 2 * pos]
         if self.turn == 0: table = [-1] * 5
         if self.turn == 1: table = list(self.deck[:3]) + [-1] * 2
         if self.turn == 2: table = list(self.deck[:4]) + [-1]
         if self.turn == 3: table = list(self.deck[:5]) 
-        return {"active_positions": active_positions, "pos": pos, "pot": pot, "bank": bank, "hand": hand, "table": table}
+        return {"active_positions": active_positions, "pos": pos, "pot": pot, "bank": bank, "hand": hand, "table": table, "bet": bet}
 
     def get_reward(self):
         table = [self.deck[:3], [self.deck[3]], [self.deck[4]]]
+        # for i, bet in enumerate(self.bets):
+        #     self.credits[i] += bet
         rewards = self.judger.get_reward(self.deck, self.players_state, self.bets)
+        # for i, rew in enumerate(rewards):
+        #     self.credits[i] += rew
         return {"table": table, "rewards": rewards}
 
 
