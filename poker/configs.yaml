@@ -1,13 +1,21 @@
+#table properties
 num_players: 9
-num_agents: 27
 num_cards: 52
+start_credits: 1000
+big_blind: 10
+small_blind: 5
+
+#model properties
 bins: 9
+num_agents: 27
 embedding_hidden_dim: 4
 feedforward_dim: 12
 hidden_size: 16
 history_compressor_depth: 25
-start_credits: 1000
-n_games: 250
+fold_discount: 0.0025
+
+#train strategy
+n_games: 5
 history_train_freq: 32
 brain_train_freq: 10
 relocation_freq: 24

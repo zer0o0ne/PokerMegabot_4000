@@ -16,6 +16,4 @@ t = time()
 dealer.game(configs["n_games"], configs["num_players"], configs["relocation_freq"], 
             configs["brain_train_freq"], configs["checkpoint_freq"], 
             configs["device"], configs["name"])
-print()
-print()
 print(configs["n_games"], "games are finished in", time() - t, "seconds")

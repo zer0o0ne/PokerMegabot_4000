@@ -42,7 +42,7 @@ class ConditionalExpectation_Loss:
         return loss
 
 def get_loss(config):
-    return ConditionalExpectation_Loss(config["start_credits"], config["function_args"], config["functions"])
+    return ConditionalExpectation_Loss(config["start_credits"], config["function_args"], config["functions"], config["fold_discount"])
 
 def get_memory(config):
     return NeuralHistoryCompressor(config["num_agents"], config["history_compressor_depth"], config["memory_params"], config["extractor_parameters"], 
@@ -52,7 +52,7 @@ def get_embedding(config):
     return SimpleEmbedding(config["num_cards"], config["embedding_hidden_dim"], config["num_players"], config["start_credits"])
 
 def get_table(config):
-    return Table(config["num_players"], config["bins"])
+    return Table(config["num_players"], config["bins"], big_blind = config["big_blind"], small_blind = config["small_blind"], start_credits = config["start_credits"])
 
 def get_brain(config):
     loss = get_loss(config)
@@ -89,6 +89,9 @@ def get_configs(filename):
     brain_train_freq = raw_configs["brain_train_freq"]
     relocation_freq = raw_configs["relocation_freq"]
     device = raw_configs["device"]
+    big_blind = raw_configs["big_blind"]
+    small_blind = raw_configs["small_blind"]
+    fold_discount = raw_configs["fold_discount"]
 
     memory_params = [
         {
@@ -192,6 +195,7 @@ def get_configs(filename):
         "agent_args": agent_args, "num_players": num_players, "bins": bins, "start_credits": start_credits, "num_agents": num_agents,
         "history_compressor_depth": history_compressor_depth, "history_train_freq": history_train_freq, "num_cards": num_cards, 
         "embedding_hidden_dim": embedding_hidden_dim, "device": device, "n_games": n_games, "brain_train_freq": brain_train_freq, 
-        "relocation_freq": relocation_freq, "checkpoint_freq": checkpoint_freq, "name": name,
+        "relocation_freq": relocation_freq, "checkpoint_freq": checkpoint_freq, "name": name, "small_blind": small_blind, "big_blind": big_blind,
+        "fold_discount": fold_discount
     }
 
