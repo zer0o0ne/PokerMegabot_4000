@@ -1,0 +1,5 @@
+Game 1 starts
+Active agents: 27, 13, 19, 6, 25, 22, 16, 24, 8, 26
+Their stacks: 995, 990, 1000, 1000, 1000, 1000, 1000, 1000, 1000
+Their histories lengths: 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
+ 
