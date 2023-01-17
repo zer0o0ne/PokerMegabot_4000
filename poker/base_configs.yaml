@@ -4,6 +4,7 @@ num_cards: 52
 start_credits: 1000
 big_blind: 10
 small_blind: 5
+max_bet: 1.5
 
 #model properties
 bins: 9
@@ -15,7 +16,9 @@ history_compressor_depth: 25
 fold_discount: 0.0025
 
 #train strategy
-n_games: 5
+n_games: 15
+reset_all: True
+with_human: True
 history_train_freq: 32
 brain_train_freq: 10
 relocation_freq: 24

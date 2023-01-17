@@ -52,7 +52,8 @@ def get_embedding(config):
     return SimpleEmbedding(config["num_cards"], config["embedding_hidden_dim"], config["num_players"], config["start_credits"])
 
 def get_table(config):
-    return Table(config["num_players"], config["bins"], big_blind = config["big_blind"], small_blind = config["small_blind"], start_credits = config["start_credits"])
+    return Table(config["num_players"], config["bins"], big_blind = config["big_blind"], small_blind = config["small_blind"], 
+                start_credits = config["start_credits"], max_bet = config["max_bet"])
 
 def get_brain(config):
     loss = get_loss(config)
@@ -74,6 +75,9 @@ def get_configs(filename):
     num_agents = raw_configs["num_agents"]
     num_cards = raw_configs["num_cards"] + 1
     bins = raw_configs["bins"]
+    max_bet = raw_configs["max_bet"]
+    with_human = raw_configs["with_human"]
+    reset_all = raw_configs["reset_all"]
     actions_dim = bins + 3
     checkpoint_freq = raw_configs["checkpoint_freq"]
     name = raw_configs["name"]
@@ -196,6 +200,6 @@ def get_configs(filename):
         "history_compressor_depth": history_compressor_depth, "history_train_freq": history_train_freq, "num_cards": num_cards, 
         "embedding_hidden_dim": embedding_hidden_dim, "device": device, "n_games": n_games, "brain_train_freq": brain_train_freq, 
         "relocation_freq": relocation_freq, "checkpoint_freq": checkpoint_freq, "name": name, "small_blind": small_blind, "big_blind": big_blind,
-        "fold_discount": fold_discount
+        "fold_discount": fold_discount, "max_bet": max_bet, "with_human": with_human, "reset_all": reset_all
     }
 

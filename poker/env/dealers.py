@@ -13,23 +13,27 @@ class SimpleDealer:
         self.table = table
         self.brain = brain
 
-    def game(self, n_games, n_players, relocation_freq = 180, training_freq = 45, checkpoint_freq = None, device = "cpu", name = "default", log_time = True):
+    def game(self, n_games, n_players, relocation_freq = 180, training_freq = 45, checkpoint_freq = None, device = "cpu", name = "default", log_time = True, with_human = False, reset_all = True):
         self.n_players = n_players
         self.device = device
+        self.n_games = n_games
+        self.reset_all = reset_all
         if checkpoint_freq is None:
             checkpoint_freq = relocation_freq * n_players
         self.init_names__(name, log_time)
-        self.brain.sit(n_players)
+        self.brain.sit(n_players, with_human = with_human)
         self.brain.set_device(device)
         self.init_history__()
+        iterations = tqdm(range(n_games), desc = "games")
+        if with_human: iterations = range(n_games)
 
-        for game in tqdm(range(n_games), desc = "games"):
+        for game in iterations:
             if game % relocation_freq == relocation_freq - 1:
-                self.brain.sit(n_players)
+                self.brain.sit(n_players, with_human = with_human)
                 self.init_history__()
                 self.table.reset()
 
-            self.game__(game)
+            self.game__(game, with_human)
 
             if game % training_freq == training_freq - 1:
                 self.brain.optimize()   
@@ -38,35 +42,43 @@ class SimpleDealer:
                 self.checkpoint__(game)    
         logging.warning("Time of finish: " + datetime.now().strftime("%d/%m/%Y_%H:%M:%S"))   
 
-    def game__(self, n):
+    def game__(self, n, with_human):
         end = False
         self.table.start_table()
         table_state = self.table.get_state()
-        self.log_start__(n)
+        self.log_start__(n, with_human)
         action = torch.zeros((self.table.bins + 3,)).to(self.device)
         env_state = self.prepare_state({"table_state": [], "now": 0}, table_state, action)
         env_state["now"] = table_state
         env_state["active_positions"] = table_state["active_positions"]
         actions = [[] for _ in range(self.n_players)] 
-        step = 1
+        step, several_all_in = 1, False
         while not end:
-            action = self.brain.step(self.table.active_player, env_state)
-            actions[self.table.active_player].append(action)
-            env_state = self.prepare_state(env_state, table_state, action["action"])
-            end, table_state_, bet = self.table.step(action["action"])
-            self.log_step__(n, table_state, action["action"], bet)
+            if not several_all_in:
+                if with_human and self.table.active_player == self.brain.human_pos:
+                    self.describe_table__()
+                    action = self.prepare_human_action__(int(input("\tYour turn: ")))
+                else:
+                    action = self.brain.step(self.table.active_player, env_state)
+                actions[self.table.active_player].append(action)
+                env_state = self.prepare_state(env_state, table_state, action["action"])
+            end, several_all_in, table_state_, bet = self.table.step(action["action"])
+            self.log_step__(n, table_state, action["action"], bet, with_human)
             table_state = table_state_
             env_state["now"] = table_state
             env_state["active_positions"] = table_state["active_positions"]
             step += 1
         reward = self.table.get_reward()
         losses = self.brain.save_loss(actions, deepcopy(reward))
-        self.log_game__(n, reward, losses)
+        self.log_game__(n, reward, losses, with_human)
         self.brain.rotate()
         self.table.rotate()
         for i in range(self.n_players):
             if self.table.credits[i] == 0:
-                self.table.reset()
+                position = None
+                if not self.reset_all:
+                    position = i
+                self.table.reset(position = position)
 
     def prepare_state(self, env_state, table_state, action):
         for_env = {
@@ -103,22 +115,32 @@ class SimpleDealer:
         with open(file, 'wb') as f:
             pickle.dump(self.brain, f)
 
-    def log_start__(self, n):
+    def log_start__(self, n, with_human = False):
         lengths = np.array([len(history) for history in self.brain.memory.stories])
         lengths = ", ".join(list(map(str, lengths[self.brain.players])))
         players = ", ".join(list(map(str, self.brain.players)))
         stacks = ", ".join(list(map(str, self.table.credits)))
+
         logging.warning('Game ' + str(n + 1) + ' starts')
         logging.warning('Active agents: ' + players)
         logging.warning('Their stacks: ' + stacks)
         logging.warning('Their histories lengths: ' + lengths)
         logging.warning(' ')
 
-    def log_step__(self, n, table_state, action, bet):
+        if with_human:
+            print('Game ' + str(n + 1) + ' of ' + str(self.n_games) + ' starts')
+            print('Active agents: ' + players)
+            print('Their stacks: ' + stacks)
+            print('Their histories lengths: ' + lengths)
+            print('Your position:', self.brain.human_pos)
+            print(' ')
+
+    def log_step__(self, n, table_state, action, bet, with_human = False):
         action = torch.argmax(action).item()
         bets = ""
         for pos in table_state["active_positions"]:
             bets += str(pos) + ": " + str(table_state["bets"][pos]) + ", "
+
         logging.warning('\tFlop: ' + self.decode_cards__(table_state["table"]))
         logging.warning('\tActive players bets: \t' + bets)
         logging.warning('\tPlayer ' + str(table_state["pos"]) + " has hand: " + self.decode_cards__(table_state["hand"]))
@@ -132,17 +154,40 @@ class SimpleDealer:
             logging.warning('\tPlayer bets ' + str(bet))
         logging.warning(' ')
 
-    def log_game__(self, n, reward, losses):
+        if with_human:
+            print('\tFlop: ' + self.decode_cards__(table_state["table"]))
+            print('\tActive players bets: \t' + bets)
+            if self.table.players_state[table_state["pos"]] == 2:
+                print('\tPlayer ' + str(table_state["pos"]) + ' goes all-in')
+            elif action == 0:
+                print('\tPlayer ' + str(table_state["pos"]) + ' folds')
+            elif action == 1:
+                print('\tPlayer ' + str(table_state["pos"]) + ' call or check')
+            else: 
+                print('\tPlayer ' + str(table_state["pos"]) + ' bets ' + str(bet))
+            print(' ')
+
+    def log_game__(self, n, reward, losses, with_human):
         rewards = ", ".join(list(map(str, reward["rewards"])))
         losses = ", ".join(list(map(str, losses)))
+
         logging.warning('\tGame finished with rewards: ' + rewards)
         logging.warning('\tGame finished with losses: ' + losses)
         logging.warning(' ')
         logging.warning(' ')
 
+        if with_human:
+            for pos in reward["active_positions"]:
+                print("\tPlayer", pos, "has hand:", self.decode_cards__(reward["hands"][pos]))
+            print(' ')
+            print('\tGame finished with rewards: ' + rewards)
+            print('\tGame finished with losses: ' + losses)
+            print(' ')
+            print(' ')
+
     def decode_cards__(self, cards):
         suits = {
-            0: "diamods",
+            0: "diamonds",
             1: "hearts",
             2: "clubs",
             3: "spades"
@@ -159,3 +204,13 @@ class SimpleDealer:
                 prepare_cards.append(str(rank) + " of " + str(suits[suit])) 
 
         return ", ".join(prepare_cards)
+
+    def prepare_human_action__(self, amount):
+        action = np.zeros((self.table.bins + 3,))
+        action[amount] = 1
+        return {"action": torch.tensor(action, dtype = torch.float).to(self.device)}
+
+    def describe_table__(self):
+        print("\tYour cards:", self.decode_cards__(self.table.get_hand()))
+
+

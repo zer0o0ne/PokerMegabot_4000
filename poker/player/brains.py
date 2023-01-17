@@ -22,16 +22,23 @@ class SimpleBrain(nn.Module):
         self.optimizer = torch.optim.Adam(self.parameters)
         self.criterion = loss
 
-    def sit(self, number, players = None):
+    def sit(self, number, players = None, with_human = False):
         self.num_players = number
+        self.human_pos = None
+        self.with_human = with_human
         if players is None:
             self.players = np.random.choice(self.indicies, size = (number,), replace = False)
         else:
             self.players = players
+        if with_human:
+            self.players = np.array([self.num_agents] + list(self.players)[:-1])
+            self.human_pos = 0
 
     def rotate(self):
         idx = [len(self.players) - 1] + list(range(len(self.players) - 1))
         self.players = self.players[idx]
+        if self.with_human:
+            self.human_pos = np.argmax(self.players)
 
     def step(self, position, env_state):
         players_state = self.memory.get_state(self.players[env_state["active_positions"]])
@@ -49,6 +56,10 @@ class SimpleBrain(nn.Module):
         losses = []
         reward["table"] = self.embedding.get_cards(reward["table"])
         for position in range(self.num_players):
+            if self.with_human:
+                if position == self.human_pos:
+                    losses.append(0) 
+                    continue
             reward["reward"] = reward["rewards"][position]
             loss = self.criterion(actions[position], reward)
             if loss is None:
@@ -67,6 +78,8 @@ class SimpleBrain(nn.Module):
     def init_history__(self, env_state, action, n_players):
         env_state = self.embedding.get_full_state(env_state)
         for position in range(n_players):
+            while self.players[position] >= len(self.memory.stories):
+                self.memory.add_agent()
             if len(self.memory.stories[self.players[position]]) == 0:
                 self.memory.archive(env_state, action, self.players[position])
 
@@ -86,7 +99,7 @@ class NeuralHistoryCompressor(nn.Module):
         self.compressors = nn.ModuleList([Transformer(**memory_params[i]) for i in range(len(memory_params))])
         self.mse = nn.MSELoss()
         self.extractor = Transformer(**extractor_parameters)
-        self.numerator = nn.Embedding(num_agents, 2)
+        self.numerator = nn.Embedding(num_agents * 2, 2)
         self.optimizer = torch.optim.Adam(self.parameters())
         self.loss, self.device = 0, "cpu"
 
@@ -132,4 +145,7 @@ class NeuralHistoryCompressor(nn.Module):
             self.optimizer.step()
             self.optimizer.zero_grad()
             self.loss = 0
+
+    def add_agent(self):
+        self.stories.append(deque())
     

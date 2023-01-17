@@ -1,0 +1,65 @@
+Game 1 starts
+Active agents: 27, 16, 22, 3, 4, 12, 25, 10, 20, 18
+Their stacks: 995, 990, 1000, 1000, 1000, 1000, 1000, 1000, 1000
+Their histories lengths: 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand: 4 of diamonds, A of hearts
+	Player folds
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand: 8 of clubs, Q of hearts
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 1000.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand: 7 of clubs, 2 of spades
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 1000.0, 4: 1000.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand: 10 of hearts, A of clubs
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand: 9 of diamonds, 7 of diamonds
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 0.0, 8: 0.0, 
+	Player 7 has hand: 3 of spades, 3 of hearts
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 0.0, 
+	Player 8 has hand: 8 of spades, 10 of diamonds
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand: K of clubs, 3 of diamonds
+	Player folds
+ 
+	Flop: 
+	Active players bets: 	1: 10.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 1 has hand: 6 of diamonds, 7 of hearts
+	Player goes all-in
+ 
+	Flop: J of clubs, 5 of hearts, J of hearts
+	Active players bets: 	1: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand: K of clubs, 3 of diamonds
+	Player folds
+ 
+	Flop: J of clubs, 5 of hearts, J of hearts, K of hearts
+	Active players bets: 	1: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand: K of clubs, 3 of diamonds
+	Player folds
+ 
+	Flop: J of clubs, 5 of hearts, J of hearts, K of hearts, 2 of clubs
+	Active players bets: 	1: 1000.0, 3: 1000.0, 4: 1000.0, 5: 1000.0, 6: 1000.0, 7: 1000.0, 8: 1000.0, 
+	Player 0 has hand: K of clubs, 3 of diamonds
+	Player folds
+ 
