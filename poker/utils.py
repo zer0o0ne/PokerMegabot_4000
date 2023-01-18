@@ -36,7 +36,7 @@ class ConditionalExpectation_Loss:
             
             pred_loss += torch.abs(action_exp - reward["reward"] / self.start_credits)
             probabilities = nn.Softmax(dim = -1)(action["action"])
-            loss += torch.log(probabilities[torch.argmax(probabilities)]) * (action_exp - reward["reward"] / self.start_credits)
+            loss += torch.log(probabilities[torch.argmax(probabilities)]) * (action_exp.item() - reward["reward"] / self.start_credits)
             loss += torch.log(probabilities[0]) * self.fold_discount
 
         return loss, pred_loss
