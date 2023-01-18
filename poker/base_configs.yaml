@@ -16,12 +16,12 @@ history_compressor_depth: 25
 fold_discount: 0.0025
 
 #train strategy
-n_games: 15
+n_games: 150000
 reset_all: True
-with_human: True
+with_human: False
 history_train_freq: 32
 brain_train_freq: 10
 relocation_freq: 24
-checkpoint_freq: 3000
-name: "test_games"
+checkpoint_freq: 25000
+name: "First_long_train"
 device: "cuda"

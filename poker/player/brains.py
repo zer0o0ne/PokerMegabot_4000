@@ -17,6 +17,7 @@ class SimpleBrain(nn.Module):
         self.modules = self.agents[0].get_modules()
         self.loss = 0
         self.parameters = list(self.embedding.parameters())
+        self.prediction_losses, self.losses = [[] for _ in range(num_agents)], [[] for _ in range(num_agents)]
         for i in range(num_agents):
             self.parameters += list(self.agents[i].parameters())
         self.optimizer = torch.optim.Adam(self.parameters)
@@ -61,12 +62,14 @@ class SimpleBrain(nn.Module):
                     losses.append(0) 
                     continue
             reward["reward"] = reward["rewards"][position]
-            loss = self.criterion(actions[position], reward)
-            if loss is None:
+            loss, pred_loss = self.criterion(actions[position], reward)
+            if loss is None or pred_loss is None:
                 losses.append(0) 
                 continue
-            self.loss += loss
-            losses.append(loss.item())
+            self.loss += loss + pred_loss
+            losses.append((loss + pred_loss).item())
+            self.prediction_losses[self.players[position]].append(pred_loss.item())
+            self.losses[self.players[position]].append(loss.item())
         return losses
     
     def optimize(self):
