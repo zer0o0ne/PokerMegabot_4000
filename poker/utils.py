@@ -24,9 +24,9 @@ class ConditionalExpectation_Loss:
             self.Modules[i].set_device(device)
 
     def __call__(self, actions, reward):
-        loss = 0
+        loss, pred_loss = 0, 0
         if len(actions) == 0:
-            return None
+            return None, None
         for action in actions:
             action_exp = 0
             for step in range(3): # Sum around known events 
@@ -34,12 +34,12 @@ class ConditionalExpectation_Loss:
                     self.Modules[step].set_weights(action["exp_f_weights"][step])
                 action_exp += self.Modules[step](reward["table"][step])
             
-            loss += torch.abs(action_exp - reward["reward"] / self.start_credits)
+            pred_loss += torch.abs(action_exp - reward["reward"] / self.start_credits)
             probabilities = nn.Softmax(dim = -1)(action["action"])
             loss += torch.log(probabilities[torch.argmax(probabilities)]) * (action_exp - reward["reward"] / self.start_credits)
             loss += torch.log(probabilities[0]) * self.fold_discount
 
-        return loss
+        return loss, pred_loss
 
 def get_loss(config):
     return ConditionalExpectation_Loss(config["start_credits"], config["function_args"], config["functions"], config["fold_discount"])

@@ -1,0 +1,40 @@
+Game 1 starts
+Active agents: 27, 25, 18, 14, 6, 4, 1, 8, 15, 7
+Their stacks: 995, 990, 1000, 1000, 1000, 1000, 1000, 1000, 1000
+Their histories lengths: 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 2 has hand: A of spades, 7 of hearts
+	Player bets 12.5
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 12.5, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 3 has hand: 2 of clubs, 2 of diamonds
+	Player bets 40.0
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 12.5, 3: 40.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 4 has hand: 7 of clubs, 5 of clubs
+	Player bets 85.0
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 12.5, 3: 40.0, 4: 85.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 5 has hand: 4 of diamonds, 10 of clubs
+	Player bets 110.41666666666666
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 12.5, 3: 40.0, 4: 85.0, 5: 110.41666666666666, 6: 0.0, 7: 0.0, 8: 0.0, 
+	Player 6 has hand: Q of clubs, Q of spades
+	Player bets 373.33333333333326
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 12.5, 3: 40.0, 4: 85.0, 5: 110.41666666666666, 6: 373.33333333333326, 7: 0.0, 8: 0.0, 
+	Player 7 has hand: 6 of hearts, A of hearts
+	Player goes all-in
+ 
+	Flop: 
+	Active players bets: 	0: 5.0, 1: 10.0, 2: 12.5, 3: 40.0, 4: 85.0, 5: 110.41666666666666, 6: 373.33333333333326, 7: 1000.0, 8: 0.0, 
+	Player 8 has hand: 3 of hearts, 5 of spades
+	Player goes all-in
+ 
