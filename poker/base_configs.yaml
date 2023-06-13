@@ -7,21 +7,21 @@ small_blind: 5
 max_bet: 1.5
 
 #model properties
-bins: 9
+bins: 9 # number of bet options between (max_bet * pot_size / bins) and (max_bet * pot_size)
 num_agents: 27
-embedding_hidden_dim: 4
-feedforward_dim: 12
-hidden_size: 16
-history_compressor_depth: 125
-fold_discount: 0.0025
+embedding_hidden_dim: 4 # hidden dimension for card embedding
+feedforward_dim: 12 # transformer parameter
+hidden_size: 16 # transformer parameter
+history_compressor_depth: 125 # depth of memory for neural history compressor
+fold_discount: 0.0025 # coefficient of penalty of fold for agent
 
 #train strategy
 n_games: 150000
-reset_all: True
-with_human: False
-history_train_freq: 32
-brain_train_freq: 10
-relocation_freq: 24
-checkpoint_freq: 25000
+reset_all: True # reset all players when everyone went bankrupt
+with_human: False # play with human or without him
+history_train_freq: 32 # number of games after which neural histoy compressor will be trained
+brain_train_freq: 10 # number of games after which brain will be trained
+relocation_freq: 24 # number of games after which agents in brain will be relocated at table
+checkpoint_freq: 25000 # # number of games after which train results will be saved
 name: "Third_long_train"
 device: "cuda"
